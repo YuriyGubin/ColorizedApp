@@ -9,11 +9,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var redSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        setupSliders()
     }
 
+    private func setupSliders() {
+        redSlider.frame.size.height = 2
+    }
 
 }
 
