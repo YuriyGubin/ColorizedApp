@@ -33,7 +33,8 @@ class ViewController: UIViewController {
             red: CGFloat(redSlider.value),
             green: CGFloat(greenSlider.value),
             blue: CGFloat(blueSlider.value),
-            alpha: 1)
+            alpha: 1
+        )
     }
     
     // MARK: - IBActions
@@ -63,7 +64,8 @@ class ViewController: UIViewController {
             red: 255,
             green: 0,
             blue: 0,
-            alpha: 0.2)
+            alpha: 0.2
+        )
         
         greenSlider.value = 0
         greenSlider.minimumValue = 0
@@ -73,7 +75,8 @@ class ViewController: UIViewController {
             red: 0,
             green: 255,
             blue: 0,
-            alpha: 0.2)
+            alpha: 0.2
+        )
         
         blueSlider.value = 0
         blueSlider.minimumValue = 0
@@ -83,7 +86,8 @@ class ViewController: UIViewController {
             red: 0,
             green: 0,
             blue: 255,
-            alpha: 0.2)
+            alpha: 0.2
+        )
     }
 }
 
