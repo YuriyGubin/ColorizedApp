@@ -8,14 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     
     @IBOutlet var colorizedView: UIView!
     
     @IBOutlet var redValueLabel: UILabel!
     @IBOutlet var greenValueLabel: UILabel!
     @IBOutlet var blueValueLabel: UILabel!
-    
     
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
@@ -35,38 +33,50 @@ class ViewController: UIViewController {
             alpha: 1)
     }
     
-    
     @IBAction func redSliderAction() {
-        redValueLabel.text = "\(round(redSlider.value * 100) / 100)"
+        redValueLabel.text = String(format: "%.02f", redSlider.value)
     }
     
     @IBAction func greenSliderAction() {
-        greenValueLabel.text = "\(round(greenSlider.value * 100) / 100)"
+        greenValueLabel.text = String(format: "%.02f", greenSlider.value)
     }
     
-    
     @IBAction func blueSliderAction() {
-        blueValueLabel.text = "\(round(blueSlider.value * 100) / 100)"
+        blueValueLabel.text = String(format: "%.02f", blueSlider.value)
     }
     
     private func setupViews() {
         colorizedView.layer.cornerRadius = 10
         
-        redSlider.minimumTrackTintColor = .red
-        greenSlider.minimumTrackTintColor = .green
-        blueSlider.minimumTrackTintColor = .blue
-        
         redSlider.minimumValue = 0
         redSlider.maximumValue = 1
+        redSlider.value = 0
+        redSlider.minimumTrackTintColor = .red
+        redSlider.maximumTrackTintColor = UIColor(
+            red: 255,
+            green: 0,
+            blue: 0,
+            alpha: 0.3)
         
         greenSlider.minimumValue = 0
         greenSlider.maximumValue = 1
+        greenSlider.value = 0
+        greenSlider.minimumTrackTintColor = .green
+        greenSlider.maximumTrackTintColor = UIColor(
+            red: 0,
+            green: 255,
+            blue: 0,
+            alpha: 0.3)
         
         blueSlider.minimumValue = 0
-        greenSlider.maximumValue = 1
-        
-        
+        blueSlider.maximumValue = 1
+        blueSlider.value = 0
+        blueSlider.minimumTrackTintColor = .blue
+        blueSlider.maximumTrackTintColor = UIColor(
+            red: 0,
+            green: 0,
+            blue: 255,
+            alpha: 0.3)
     }
-
 }
 
