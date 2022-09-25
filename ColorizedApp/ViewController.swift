@@ -48,35 +48,35 @@ class ViewController: UIViewController {
     private func setupViews() {
         colorizedView.layer.cornerRadius = 10
         
+        redSlider.value = 0
         redSlider.minimumValue = 0
         redSlider.maximumValue = 1
-        redSlider.value = 0
         redSlider.minimumTrackTintColor = .red
         redSlider.maximumTrackTintColor = UIColor(
             red: 255,
             green: 0,
             blue: 0,
-            alpha: 0.3)
+            alpha: 0.2)
         
+        greenSlider.value = 0
         greenSlider.minimumValue = 0
         greenSlider.maximumValue = 1
-        greenSlider.value = 0
         greenSlider.minimumTrackTintColor = .green
         greenSlider.maximumTrackTintColor = UIColor(
             red: 0,
             green: 255,
             blue: 0,
-            alpha: 0.3)
+            alpha: 0.2)
         
+        blueSlider.value = 0
         blueSlider.minimumValue = 0
         blueSlider.maximumValue = 1
-        blueSlider.value = 0
         blueSlider.minimumTrackTintColor = .blue
         blueSlider.maximumTrackTintColor = UIColor(
             red: 0,
             green: 0,
             blue: 255,
-            alpha: 0.3)
+            alpha: 0.2)
     }
 }
 
