@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    // MARK: - IBOutlets
     
     @IBOutlet var colorizedView: UIView!
     
@@ -18,6 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
+    
+    // MARK: - methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,8 @@ class ViewController: UIViewController {
             alpha: 1)
     }
     
+    // MARK: - IBActions
+    
     @IBAction func redSliderAction() {
         redValueLabel.text = String(format: "%.02f", redSlider.value)
     }
@@ -44,6 +49,8 @@ class ViewController: UIViewController {
     @IBAction func blueSliderAction() {
         blueValueLabel.text = String(format: "%.02f", blueSlider.value)
     }
+    
+    // MARK: - private methods
     
     private func setupViews() {
         colorizedView.layer.cornerRadius = 10
