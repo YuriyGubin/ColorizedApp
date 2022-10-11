@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SettingsViewController.swift
 //  ColorizedApp
 //
 //  Created by Yuriy on 23.09.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet var colorizedView: UIView!
@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet var redValueLabel: UILabel!
     @IBOutlet var greenValueLabel: UILabel!
     @IBOutlet var blueValueLabel: UILabel!
+    
+    var color: UIColor!
     
     @IBOutlet var redSlider: UISlider! {
         didSet {
@@ -40,6 +42,7 @@ class ViewController: UIViewController {
         colorizedView.layer.cornerRadius = 15
         setColor()
         setValue()
+        
     }
     
     @IBAction func slidersAction(_ sender: UISlider) {
