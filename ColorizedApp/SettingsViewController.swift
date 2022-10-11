@@ -81,6 +81,10 @@ class SettingsViewController: UIViewController {
         redValueLabel.text = string(from: redSlider)
         greenValueLabel.text = string(from: greenSlider)
         blueValueLabel.text = string(from: blueSlider)
+        
+        redTF.text = string(from: redSlider)
+        greenTF.text = string(from: greenSlider)
+        blueTF.text = string(from: blueSlider)
     }
     
     private func string(from slider: UISlider) -> String {
