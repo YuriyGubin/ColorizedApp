@@ -16,7 +16,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenValueLabel: UILabel!
     @IBOutlet var blueValueLabel: UILabel!
     
-    var viewColor: UIColor!
+    @IBOutlet var redTF: UITextField!
+    @IBOutlet var greenTF: UITextField!
+    @IBOutlet var blueTF: UITextField!
     
     @IBOutlet var redSlider: UISlider! {
         didSet {
@@ -40,6 +42,8 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    var viewColor: UIColor!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         colorizedView.layer.cornerRadius = 15
@@ -53,10 +57,13 @@ class SettingsViewController: UIViewController {
         switch sender {
         case redSlider:
             redValueLabel.text = string(from: sender)
+            redTF.text = string(from: sender)
         case greenSlider:
             greenValueLabel.text = string(from: sender)
+            greenTF.text = string(from: sender)
         default:
             blueValueLabel.text = string(from: sender)
+            blueTF.text = string(from: sender)
         }
     }
     
@@ -78,6 +85,11 @@ class SettingsViewController: UIViewController {
     
     private func string(from slider: UISlider) -> String {
         String(format: "%.02f", slider.value)
+    }
+    
+    internal override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
 }
 
