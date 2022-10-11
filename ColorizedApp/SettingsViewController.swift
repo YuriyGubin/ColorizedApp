@@ -22,18 +22,21 @@ class SettingsViewController: UIViewController {
         didSet {
             redSlider.minimumTrackTintColor = .red
             redSlider.maximumTrackTintColor = .red.withAlphaComponent(0.2)
+            redSlider.value = Float(color.rgba.red)
         }
     }
     @IBOutlet var greenSlider: UISlider! {
         didSet {
             greenSlider.minimumTrackTintColor = .green
             greenSlider.maximumTrackTintColor = .green.withAlphaComponent(0.2)
+            greenSlider.value = Float(color.rgba.green)
         }
     }
     @IBOutlet var blueSlider: UISlider! {
         didSet {
             blueSlider.minimumTrackTintColor = .blue
             blueSlider.maximumTrackTintColor = .blue.withAlphaComponent(0.2)
+            blueSlider.value = Float(color.rgba.blue)
         }
     }
     
@@ -77,3 +80,13 @@ class SettingsViewController: UIViewController {
     }
 }
 
+extension UIColor {
+    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return (r, g, b, a)
+    }
+}
