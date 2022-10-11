@@ -47,7 +47,7 @@ class SettingsViewController: UIViewController {
         setValue()
         
     }
-    
+    // MARK: - IBActions
     @IBAction func slidersAction(_ sender: UISlider) {
         setColor()
         switch sender {
@@ -60,6 +60,7 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    // MARK: - private methods
     private func setColor() {
         colorizedView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
