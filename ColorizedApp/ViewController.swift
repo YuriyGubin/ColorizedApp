@@ -35,12 +35,26 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - methods
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         colorizedView.layer.cornerRadius = 15
-        
+        setColor()
+        setValue()
+    }
+    
+    @IBAction func slidersAction(_ sender: UISlider) {
+        setColor()
+        switch sender {
+        case redSlider:
+            redValueLabel.text = string(from: sender)
+        case greenSlider:
+            greenValueLabel.text = string(from: sender)
+        default:
+            blueValueLabel.text = string(from: sender)
+        }
+    }
+    
+    private func setColor() {
         colorizedView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
             green: CGFloat(greenSlider.value),
@@ -49,19 +63,14 @@ class ViewController: UIViewController {
         )
     }
     
+    private func setValue() {
+        redValueLabel.text = string(from: redSlider)
+        greenValueLabel.text = string(from: greenSlider)
+        blueValueLabel.text = string(from: blueSlider)
+    }
     
-    // MARK: - IBActions
-    
-    @IBAction func slidersAction(_ sender: UISlider) {
-        colorizedView.backgroundColor = UIColor(
-            red: CGFloat(redSlider.value),
-            green: CGFloat(greenSlider.value),
-            blue: CGFloat(blueSlider.value),
-            alpha: 1
-        )
-        redValueLabel.text = String(format: "%.02f", redSlider.value)
-        greenValueLabel.text = String(format: "%.02f", greenSlider.value)
-        blueValueLabel.text = String(format: "%.02f", blueSlider.value)
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.02f", slider.value)
     }
 }
 
