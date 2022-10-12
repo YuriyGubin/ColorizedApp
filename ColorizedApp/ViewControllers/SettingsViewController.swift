@@ -16,9 +16,21 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenLabel: UILabel!
     @IBOutlet var blueLabel: UILabel!
     
-    @IBOutlet var redTF: UITextField!
-    @IBOutlet var greenTF: UITextField!
-    @IBOutlet var blueTF: UITextField!
+    @IBOutlet var redTF: UITextField! {
+        didSet {
+            redTF.addDoneToolbar()
+        }
+    }
+    @IBOutlet var greenTF: UITextField! {
+        didSet {
+            greenTF.addDoneToolbar()
+        }
+    }
+    @IBOutlet var blueTF: UITextField! {
+        didSet {
+            blueTF.addDoneToolbar()
+        }
+    }
     
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
@@ -29,6 +41,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.endEditing(true)
         colorizedView.layer.cornerRadius = 15
         setupSliders()
         setColor()
@@ -65,7 +78,7 @@ class SettingsViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    // MARK: - private methods
+    // MARK: - Private methods
     private func setupSliders() {
         redSlider.minimumTrackTintColor = .red
         redSlider.maximumTrackTintColor = .red.withAlphaComponent(0.2)
@@ -105,7 +118,7 @@ class SettingsViewController: UIViewController {
     }
 }
 
-// MARK: - alert controller
+// MARK: - Alert controller
 extension SettingsViewController {
     func showAlert(title: String, message: String, textField: UITextField? = nil) {
         let alert = UIAlertController(
@@ -121,7 +134,50 @@ extension SettingsViewController {
     }
 }
 
-// MARK: - get components from UIColor instance
+// MARK: - UITextFieldDelegate
+
+extension SettingsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let value = Float(textField.text ?? ""), value >= 0, value <= 1 {
+            switch textField {
+            case redTF:
+                redSlider.value = value
+                redLabel.text = string(from: redSlider)
+            case greenTF:
+                greenSlider.value = value
+                greenLabel.text = string(from: greenSlider)
+            default:
+                blueSlider.value = value
+                blueLabel.text = string(from: blueSlider)
+            }
+        } else {
+            showAlert(title: "Wrong format", message: "You should use range from 0 to 1", textField: textField)
+        }
+        
+        setColor()
+    }
+}
+
+
+// MARK: - Add Done button (from google)
+extension UITextField {
+    func addDoneToolbar(onDone: (target: Any, action: Selector)? = nil) {
+        let toolbar: UIToolbar = UIToolbar()
+        toolbar.barStyle = .default
+        toolbar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(title: "Done", style: .done, target: onDone?.target, action: onDone?.action)
+        ]
+        toolbar.sizeToFit()
+        self.inputAccessoryView = toolbar
+    }
+    @objc func doneButtonTapped() {
+        self.resignFirstResponder()
+    }
+}
+
+
+// MARK: - Get components from UIColor instance (from google)
 extension UIColor {
     var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var r: CGFloat = 0
