@@ -20,33 +20,16 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenTF: UITextField!
     @IBOutlet var blueTF: UITextField!
     
-    @IBOutlet var redSlider: UISlider! {
-        didSet {
-            redSlider.minimumTrackTintColor = .red
-            redSlider.maximumTrackTintColor = .red.withAlphaComponent(0.2)
-            redSlider.value = Float(viewColor.rgba.red)
-        }
-    }
-    @IBOutlet var greenSlider: UISlider! {
-        didSet {
-            greenSlider.minimumTrackTintColor = .green
-            greenSlider.maximumTrackTintColor = .green.withAlphaComponent(0.2)
-            greenSlider.value = Float(viewColor.rgba.green)
-        }
-    }
-    @IBOutlet var blueSlider: UISlider! {
-        didSet {
-            blueSlider.minimumTrackTintColor = .blue
-            blueSlider.maximumTrackTintColor = .blue.withAlphaComponent(0.2)
-            blueSlider.value = Float(viewColor.rgba.blue)
-        }
-    }
+    @IBOutlet var redSlider: UISlider!
+    @IBOutlet var greenSlider: UISlider!
+    @IBOutlet var blueSlider: UISlider!
     
     var viewColor: UIColor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         colorizedView.layer.cornerRadius = 15
+        setupSliders()
         setColor()
         setValue()
         
@@ -68,6 +51,21 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - private methods
+    private func setupSliders() {
+        redSlider.minimumTrackTintColor = .red
+        redSlider.maximumTrackTintColor = .red.withAlphaComponent(0.2)
+        
+        greenSlider.minimumTrackTintColor = .green
+        greenSlider.maximumTrackTintColor = .green.withAlphaComponent(0.2)
+        
+        blueSlider.minimumTrackTintColor = .blue
+        blueSlider.maximumTrackTintColor = .blue.withAlphaComponent(0.2)
+        
+        redSlider.value = Float(viewColor.rgba.red)
+        greenSlider.value = Float(viewColor.rgba.green)
+        blueSlider.value = Float(viewColor.rgba.blue)
+    }
+    
     private func setColor() {
         colorizedView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
