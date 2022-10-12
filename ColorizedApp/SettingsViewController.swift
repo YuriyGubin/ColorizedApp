@@ -89,7 +89,7 @@ class SettingsViewController: UIViewController {
         String(format: "%.02f", slider.value)
     }
     
-    internal override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
@@ -104,5 +104,21 @@ extension UIColor {
         var a: CGFloat = 0
         self.getRed(&r, green: &g, blue: &b, alpha: &a)
         return (r, g, b, a)
+    }
+}
+
+// MARK: - alert controller
+extension SettingsViewController {
+    func showAlert(title: String, message: String, textField: UITextField? = nil) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            textField?.text = ""
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
