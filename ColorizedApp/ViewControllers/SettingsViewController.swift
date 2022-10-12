@@ -32,8 +32,13 @@ class SettingsViewController: UIViewController {
         setupSliders()
         setColor()
         setValue()
-        
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
     // MARK: - IBActions
     @IBAction func slidersAction(_ sender: UISlider) {
         setColor()
@@ -87,11 +92,6 @@ class SettingsViewController: UIViewController {
     
     private func string(from slider: UISlider) -> String {
         String(format: "%.02f", slider.value)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
     }
 }
 
