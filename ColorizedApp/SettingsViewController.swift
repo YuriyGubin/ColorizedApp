@@ -12,9 +12,9 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet var colorizedView: UIView!
     
-    @IBOutlet var redValueLabel: UILabel!
-    @IBOutlet var greenValueLabel: UILabel!
-    @IBOutlet var blueValueLabel: UILabel!
+    @IBOutlet var redLabel: UILabel!
+    @IBOutlet var greenLabel: UILabel!
+    @IBOutlet var blueLabel: UILabel!
     
     @IBOutlet var redTF: UITextField!
     @IBOutlet var greenTF: UITextField!
@@ -39,13 +39,13 @@ class SettingsViewController: UIViewController {
         setColor()
         switch sender {
         case redSlider:
-            redValueLabel.text = string(from: sender)
+            redLabel.text = string(from: sender)
             redTF.text = string(from: sender)
         case greenSlider:
-            greenValueLabel.text = string(from: sender)
+            greenLabel.text = string(from: sender)
             greenTF.text = string(from: sender)
         default:
-            blueValueLabel.text = string(from: sender)
+            blueLabel.text = string(from: sender)
             blueTF.text = string(from: sender)
         }
     }
@@ -76,9 +76,9 @@ class SettingsViewController: UIViewController {
     }
     
     private func setValue() {
-        redValueLabel.text = string(from: redSlider)
-        greenValueLabel.text = string(from: greenSlider)
-        blueValueLabel.text = string(from: blueSlider)
+        redLabel.text = string(from: redSlider)
+        greenLabel.text = string(from: greenSlider)
+        blueLabel.text = string(from: blueSlider)
         
         redTF.text = string(from: redSlider)
         greenTF.text = string(from: greenSlider)
