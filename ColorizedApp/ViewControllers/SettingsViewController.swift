@@ -42,6 +42,11 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.endEditing(true)
+        
+        redTF.delegate = self
+        greenTF.delegate = self
+        blueTF.delegate = self
+        
         colorizedView.layer.cornerRadius = 15
         setupSliders()
         setColor()
@@ -162,11 +167,12 @@ extension SettingsViewController: UITextFieldDelegate {
 // MARK: - Add Done button (from google)
 extension UITextField {
     func addDoneToolbar(onDone: (target: Any, action: Selector)? = nil) {
+        let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
         let toolbar: UIToolbar = UIToolbar()
         toolbar.barStyle = .default
         toolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-            UIBarButtonItem(title: "Done", style: .done, target: onDone?.target, action: onDone?.action)
+            UIBarButtonItem(title: "Done", style: .done, target: onDone.target, action: onDone.action)
         ]
         toolbar.sizeToFit()
         self.inputAccessoryView = toolbar
