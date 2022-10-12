@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SettingsViewControllerDelegate {
+    func setBackgroundColorWith(red: CGFloat, green: CGFloat, blue: CGFloat)
+}
+
 class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -17,7 +21,13 @@ class FirstViewController: UIViewController {
         guard let navigationVC = segue.destination as? UINavigationController else { return }
         guard let settingsVC = navigationVC.topViewController as? SettingsViewController else { return }
         settingsVC.viewColor = view.backgroundColor
+        settingsVC.delegate = self
     }
+}
 
-
+// MARK: - SettingsViewControllerDelegate
+extension FirstViewController: SettingsViewControllerDelegate {
+    func setBackgroundColorWith(red: CGFloat, green: CGFloat, blue: CGFloat) {
+        view.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
+    }
 }

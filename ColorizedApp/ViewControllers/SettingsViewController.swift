@@ -25,6 +25,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet var blueSlider: UISlider!
     
     var viewColor: UIColor!
+    var delegate: SettingsViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,15 @@ class SettingsViewController: UIViewController {
             blueLabel.text = string(from: sender)
             blueTF.text = string(from: sender)
         }
+    }
+    
+    @IBAction func doneButtonPressed() {
+        delegate.setBackgroundColorWith(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value)
+        )
+        dismiss(animated: true)
     }
     
     // MARK: - private methods
