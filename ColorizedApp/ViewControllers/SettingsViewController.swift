@@ -16,21 +16,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenLabel: UILabel!
     @IBOutlet var blueLabel: UILabel!
     
-    @IBOutlet var redTF: UITextField! {
-        didSet {
-            redTF.addDoneToolbar()
-        }
-    }
-    @IBOutlet var greenTF: UITextField! {
-        didSet {
-            greenTF.addDoneToolbar()
-        }
-    }
-    @IBOutlet var blueTF: UITextField! {
-        didSet {
-            blueTF.addDoneToolbar()
-        }
-    }
+    @IBOutlet var redTF: UITextField!
+    @IBOutlet var greenTF: UITextField!
+    @IBOutlet var blueTF: UITextField!
     
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
@@ -51,6 +39,8 @@ class SettingsViewController: UIViewController {
         setupSliders()
         setColor()
         setValue()
+        
+        addButtonsToTextFields()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -84,6 +74,12 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - Private methods
+    private func addButtonsToTextFields() {
+        redTF.addDoneToolbar()
+        greenTF.addDoneToolbar()
+        blueTF.addDoneToolbar()
+    }
+    
     private func setupSliders() {
         redSlider.minimumTrackTintColor = .red
         redSlider.maximumTrackTintColor = .red.withAlphaComponent(0.2)
