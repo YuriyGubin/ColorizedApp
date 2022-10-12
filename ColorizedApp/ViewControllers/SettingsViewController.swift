@@ -105,18 +105,6 @@ class SettingsViewController: UIViewController {
     }
 }
 
-// MARK: - get components from UIColor instance
-extension UIColor {
-    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-        var r: CGFloat = 0
-        var g: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
-        self.getRed(&r, green: &g, blue: &b, alpha: &a)
-        return (r, g, b, a)
-    }
-}
-
 // MARK: - alert controller
 extension SettingsViewController {
     func showAlert(title: String, message: String, textField: UITextField? = nil) {
@@ -130,5 +118,17 @@ extension SettingsViewController {
         }
         alert.addAction(okAction)
         present(alert, animated: true)
+    }
+}
+
+// MARK: - get components from UIColor instance
+extension UIColor {
+    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return (r, g, b, a)
     }
 }
