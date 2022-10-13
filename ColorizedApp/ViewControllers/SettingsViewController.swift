@@ -29,7 +29,6 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.endEditing(true)
         
         colorizedView.layer.cornerRadius = 15
         setupSliders()
@@ -155,7 +154,7 @@ extension SettingsViewController: UITextFieldDelegate {
                 blueLabel.text = string(from: blueSlider)
             }
         } else {
-            showAlert(title: "Wrong format", message: "You should use range from 0 to 1", textField: textField)
+            showAlert(title: "Wrong format", message: "You should  to use range from 0 to 1", textField: textField)
         }
         
         setColor()
