@@ -167,7 +167,7 @@ extension SettingsViewController: UITextFieldDelegate {
 extension UITextField {
     func addDoneToolbar(onDone: (target: Any, action: Selector)? = nil) {
         let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
-        let toolbar: UIToolbar = UIToolbar()
+        let toolbar = UIToolbar()
         toolbar.barStyle = .default
         toolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
@@ -177,7 +177,7 @@ extension UITextField {
         self.inputAccessoryView = toolbar
     }
     @objc func doneButtonTapped() {
-        self.resignFirstResponder()
+        resignFirstResponder()
     }
 }
 
