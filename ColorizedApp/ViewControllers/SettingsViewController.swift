@@ -31,15 +31,12 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         view.endEditing(true)
         
-        redTF.delegate = self
-        greenTF.delegate = self
-        blueTF.delegate = self
-        
         colorizedView.layer.cornerRadius = 15
         setupSliders()
         setColor()
         setValue()
         
+        initDelegatesForTextFields()
         addButtonsToTextFields()
     }
     
@@ -74,6 +71,12 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - Private methods
+    private func initDelegatesForTextFields() {
+        redTF.delegate = self
+        greenTF.delegate = self
+        blueTF.delegate = self
+    }
+    
     private func addButtonsToTextFields() {
         redTF.addDoneToolbar()
         greenTF.addDoneToolbar()
