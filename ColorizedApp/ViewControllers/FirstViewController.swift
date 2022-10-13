@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SettingsViewControllerDelegate {
-    func setBackgroundColorWith(red: CGFloat, green: CGFloat, blue: CGFloat)
+    func setBackgroundColor(with color: UIColor)
 }
 
 class FirstViewController: UIViewController {
@@ -23,7 +23,7 @@ class FirstViewController: UIViewController {
 
 // MARK: - SettingsViewControllerDelegate
 extension FirstViewController: SettingsViewControllerDelegate {
-    func setBackgroundColorWith(red: CGFloat, green: CGFloat, blue: CGFloat) {
-        view.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
+    func setBackgroundColor(with color: UIColor) {
+        view.backgroundColor = color
     }
 }

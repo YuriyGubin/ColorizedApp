@@ -61,11 +61,12 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed() {
-        delegate.setBackgroundColorWith(
+        delegate.setBackgroundColor(with: UIColor(
             red: CGFloat(redSlider.value),
             green: CGFloat(greenSlider.value),
-            blue: CGFloat(blueSlider.value)
-        )
+            blue: CGFloat(blueSlider.value),
+            alpha: 1
+        ))
         dismiss(animated: true)
     }
     
@@ -168,7 +169,6 @@ extension UITextField {
     func addDoneToolbar(onDone: (target: Any, action: Selector)? = nil) {
         let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
         let toolbar = UIToolbar()
-        toolbar.barStyle = .default
         toolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
             UIBarButtonItem(title: "Done", style: .done, target: onDone.target, action: onDone.action)
