@@ -160,7 +160,8 @@ extension SettingsViewController: UITextFieldDelegate {
 }
 
 
-// MARK: - Add Done button (from google)
+// MARK: - Add Done button
+// From google. Ничего не понял, но очень интересно
 extension UITextField {
     func addDoneToolbar(onDone: (target: Any, action: Selector)? = nil) {
         let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
@@ -179,7 +180,8 @@ extension UITextField {
 }
 
 
-// MARK: - Get components from UIColor instance (from google)
+// MARK: - Get components from UIColor instance
+// From google
 extension UIColor {
     var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var r: CGFloat = 0
