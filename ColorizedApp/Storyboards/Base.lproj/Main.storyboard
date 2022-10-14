@@ -22,7 +22,7 @@
                     <navigationItem key="navigationItem" id="AkJ-jf-h3m">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gear" catalog="system" id="XkJ-j7-EKD">
                             <connections>
-                                <segue destination="zJL-T7-hqP" kind="presentation" modalPresentationStyle="fullScreen" id="4Uz-ds-UnP"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="bse-Fe-TPT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -40,11 +40,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7Z-7m-Buw">
-                                <rect key="frame" x="16" y="123.00000000000001" width="361" height="151.33333333333337"/>
+                                <rect key="frame" x="16" y="79.000000000000014" width="361" height="151.33333333333337"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bkn-zO-Jgb">
-                                <rect key="frame" x="16" y="324.33333333333331" width="361" height="142"/>
+                                <rect key="frame" x="16" y="280.33333333333331" width="361" height="142"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="dgD-St-r6m">
                                         <rect key="frame" x="0.0" y="0.0" width="51" height="142"/>
@@ -190,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1799" y="-35"/>
+            <point key="canvasLocation" x="1118" y="-35"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X9b-Cx-ERc">
@@ -209,25 +209,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j49-Mb-PCv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-430" y="-35"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Eps-jr-niL">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zJL-T7-hqP" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="pyu-BJ-IJc"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ImA-tG-ygv">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="j7h-Rg-sk1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pem-3S-RtX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1054.1984732824426" y="-34.507042253521128"/>
         </scene>
     </scenes>
     <resources>
