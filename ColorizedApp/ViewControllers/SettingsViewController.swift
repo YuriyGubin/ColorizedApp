@@ -147,10 +147,6 @@ extension SettingsViewController: UITextFieldDelegate {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         
-        if textField != redTF {
-            textField.inputAccessoryView = keyboardToolbar
-        }
-        
         let doneButton = UIBarButtonItem(
             barButtonSystemItem: .done,
             target: textField,
