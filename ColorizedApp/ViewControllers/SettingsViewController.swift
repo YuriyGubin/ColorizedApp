@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController {
     var viewColor: UIColor!
     var delegate: SettingsViewControllerDelegate!
     
+    // MARK: - View life cicle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,7 +132,8 @@ extension SettingsViewController {
             preferredStyle: .alert
         )
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            textField?.text = ""
+            textField?.text = "1.00"
+            textField?.becomeFirstResponder()
         }
         alert.addAction(okAction)
         present(alert, animated: true)
