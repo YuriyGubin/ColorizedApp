@@ -144,6 +144,27 @@ extension SettingsViewController {
 
 extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        
+        if textField != redTF {
+            textField.inputAccessoryView = keyboardToolbar
+        }
+        
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: textField,
+            action: #selector(resignFirstResponder)
+        )
+        
+        let flexBarButton = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        
+        keyboardToolbar.items = [flexBarButton, doneButton]
+        
         if let value = Float(textField.text ?? ""), value >= 0, value <= 1 {
             switch textField {
             case redTF:
@@ -165,23 +186,23 @@ extension SettingsViewController: UITextFieldDelegate {
 }
 
 
-// MARK: - Add Done button
-// From google. Ничего не понял, но очень интересно
-extension UITextField {
-    func addDoneToolbar(onDone: (target: Any, action: Selector)? = nil) {
-        let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
-        let toolbar = UIToolbar()
-        toolbar.items = [
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-            UIBarButtonItem(title: "Done", style: .done, target: onDone.target, action: onDone.action)
-        ]
-        toolbar.sizeToFit()
-        self.inputAccessoryView = toolbar
-    }
-    @objc func doneButtonTapped() {
-        resignFirstResponder()
-    }
-}
+//// MARK: - Add Done button
+//// From google. Ничего не понял, но очень интересно
+//extension UITextField {
+//    func addDoneToolbar(onDone: (target: Any, action: Selector)? = nil) {
+//        let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
+//        let toolbar = UIToolbar()
+//        toolbar.items = [
+//            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+//            UIBarButtonItem(title: "Done", style: .done, target: onDone.target, action: onDone.action)
+//        ]
+//        toolbar.sizeToFit()
+//        self.inputAccessoryView = toolbar
+//    }
+//    @objc func doneButtonTapped() {
+//        resignFirstResponder()
+//    }
+//}
 
 
 // MARK: - Get components from UIColor instance
