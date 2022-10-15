@@ -37,7 +37,6 @@ class SettingsViewController: UIViewController {
         setValue()
         
         initDelegatesForTextFields()
-        //addButtonsToTextFields()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -88,9 +87,10 @@ class SettingsViewController: UIViewController {
         blueSlider.minimumTrackTintColor = .blue
         blueSlider.maximumTrackTintColor = .blue.withAlphaComponent(0.2)
         
-        redSlider.value = Float(viewColor.rgba.red)
-        greenSlider.value = Float(viewColor.rgba.green)
-        blueSlider.value = Float(viewColor.rgba.blue)
+        let ciColor = CIColor(color: viewColor)
+        redSlider.value = Float(ciColor.red)
+        greenSlider.value = Float(ciColor.green)
+        blueSlider.value = Float(ciColor.blue)
     }
     
     private func setColor() {
@@ -185,15 +185,3 @@ extension SettingsViewController: UITextFieldDelegate {
 }
 
 
-// MARK: - Get components from UIColor instance
-// From google
-extension UIColor {
-    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-        var r: CGFloat = 0
-        var g: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
-        self.getRed(&r, green: &g, blue: &b, alpha: &a)
-        return (r, g, b, a)
-    }
-}
