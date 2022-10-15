@@ -143,7 +143,7 @@ extension SettingsViewController {
 // MARK: - UITextFieldDelegate
 
 extension SettingsViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         
