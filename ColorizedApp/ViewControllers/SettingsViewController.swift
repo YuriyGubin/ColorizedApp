@@ -160,17 +160,19 @@ extension SettingsViewController: UITextFieldDelegate {
         )
         
         keyboardToolbar.items = [flexBarButton, doneButton]
-        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if let value = Float(textField.text ?? ""), value >= 0, value <= 1 {
             switch textField {
             case redTF:
-                redSlider.value = value
+                redSlider.setValue(value, animated: true)
                 redLabel.text = string(from: redSlider)
             case greenTF:
-                greenSlider.value = value
+                greenSlider.setValue(value, animated: true)
                 greenLabel.text = string(from: greenSlider)
             default:
-                blueSlider.value = value
+                blueSlider.setValue(value, animated: true)
                 blueLabel.text = string(from: blueSlider)
             }
         } else {
