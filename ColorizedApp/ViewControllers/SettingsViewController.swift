@@ -37,7 +37,7 @@ class SettingsViewController: UIViewController {
         setValue()
         
         initDelegatesForTextFields()
-        addButtonsToTextFields()
+        //addButtonsToTextFields()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -78,11 +78,11 @@ class SettingsViewController: UIViewController {
         blueTF.delegate = self
     }
     
-    private func addButtonsToTextFields() {
-        redTF.addDoneToolbar()
-        greenTF.addDoneToolbar()
-        blueTF.addDoneToolbar()
-    }
+//    private func addButtonsToTextFields() {
+//        redTF.addDoneToolbar()
+//        greenTF.addDoneToolbar()
+//        blueTF.addDoneToolbar()
+//    }
     
     private func setupSliders() {
         redSlider.minimumTrackTintColor = .red
@@ -163,22 +163,29 @@ extension SettingsViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let value = Float(textField.text ?? ""), value >= 0, value <= 1 {
-            switch textField {
-            case redTF:
-                redSlider.setValue(value, animated: true)
-                redLabel.text = string(from: redSlider)
-            case greenTF:
-                greenSlider.setValue(value, animated: true)
-                greenLabel.text = string(from: greenSlider)
-            default:
-                blueSlider.setValue(value, animated: true)
-                blueLabel.text = string(from: blueSlider)
-            }
-        } else {
-            showAlert(title: "Wrong format", message: "You should  to use range from 0 to 1", textField: textField)
+        guard let text = textField.text else {
+            showAlert(title: "Wrong format!", message: "Please enter correct value")
+            return
         }
-        
+        guard let currentValue = Float(text), (0...1).contains(currentValue) else {
+            showAlert(
+                title: "Wrong format!",
+                message: "Please enter correct value",
+                textField: textField
+            )
+            return
+        }
+        switch textField {
+        case redTF:
+            redSlider.setValue(currentValue, animated: true)
+            redLabel.text = string(from: redSlider)
+        case greenTF:
+            greenSlider.setValue(currentValue, animated: true)
+            greenLabel.text = string(from: greenSlider)
+        default:
+            blueSlider.setValue(currentValue, animated: true)
+            blueLabel.text = string(from: blueSlider)
+        }
         setColor()
     }
 }
