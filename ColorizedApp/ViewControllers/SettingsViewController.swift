@@ -137,25 +137,6 @@ extension SettingsViewController {
 // MARK: - UITextFieldDelegate
 
 extension SettingsViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        let keyboardToolbar = UIToolbar()
-        keyboardToolbar.sizeToFit()
-        
-        let doneButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: textField,
-            action: #selector(resignFirstResponder)
-        )
-        
-        let flexBarButton = UIBarButtonItem(
-            barButtonSystemItem: .flexibleSpace,
-            target: nil,
-            action: nil
-        )
-        
-        keyboardToolbar.items = [flexBarButton, doneButton]
-    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else {
             showAlert(title: "Wrong format!", message: "Please enter correct value")
@@ -181,6 +162,25 @@ extension SettingsViewController: UITextFieldDelegate {
             blueLabel.text = string(from: blueSlider)
         }
         setColor()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: textField,
+            action: #selector(resignFirstResponder)
+        )
+        
+        let flexBarButton = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        
+        keyboardToolbar.items = [flexBarButton, doneButton]
     }
 }
 
